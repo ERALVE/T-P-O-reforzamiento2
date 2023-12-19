@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class Register(models.Model):
+    nombre = models.CharField(max_length=40)
+    especie = models.CharField(max_length=20)
+    genero = models.CharField(max_length=1)
