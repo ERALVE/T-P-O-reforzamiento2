@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content%}
+    <p>Uso de ORM's en Django</p>
+
+     {% for pokemon in data %}
+        <p>{{ pokemon.nombre }} es tipo {{ pokemon.tipo }}</p>
+
+    {% endfor %}
+
+
+{% endblock %}

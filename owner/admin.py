@@ -3,4 +3,5 @@ from .models import Owner
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("nombre", "edad", "pais", "dni", "vigente")
+    search_fields = ('nombre',)
