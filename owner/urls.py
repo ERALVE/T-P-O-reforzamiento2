@@ -19,5 +19,6 @@ urlpatterns = [
 
     #URLs Django Framework drf
     path('owner_list_drf_def/', views.Owner_api_view, name="owner_list_drf_def"),
+    path('owner_detail_drf_def/<int:pk>', views.owner_details_view, name="owner_detail_drf_def"),
 
 ]

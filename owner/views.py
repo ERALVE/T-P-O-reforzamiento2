@@ -210,6 +210,27 @@ def Owner_api_view(request):
 
         return Response(serializers_class.data, status=status.HTTP_200_OK)
 
+@api_view(['GET', 'PUT', 'DELETE'])
+def owner_details_view(request, pk):
+    owner = Owner.objects.filter(id=pk).first()
+
+    if owner:
+        if request.method == 'GET':
+            serializers_class = OwnerSerializers(owner)
+            return Response(serializers_class.data)
+
+        elif request.method == 'DELETE':
+            print("Ingreso a DELETE")
+            owner.delete()
+            return Response("Owner ha sido eliminado de la base de datos", status=status.HTTP_200_OK)
+
+        elif request.method == "PUT":
+            serializers_class = OwnerSerializers(owner, data=request.data)
+            if serializers_class.is_valid():
+                serializers_class.save()
+
+                return Response(serializers_class.data, status=status.HTTP_202_ACCEPTED)
+            return Response(serializers_class.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
