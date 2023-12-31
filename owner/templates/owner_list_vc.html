@@ -1,0 +1,34 @@
+{% extends "base_generic_owner.html" %}
+
+{% block content%}
+    <h3>Lista de owner registrados (VCB) </h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Acción</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for owner in object_list %}
+            <tr>
+                {#             Las plantillas de Django tienen una propiedad que se llama forloops#}
+                {#                 me va ayudar a agregar al contador de donde empieza a imprimir (orden consecutivo, numeración) la plantilla#}
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><p>{{ owner.nombre }} tiene {{ owner.edad }} años y es de {{ owner.pais }}</p></td>
+                <td>
+                    <a class="btn btn-primary" href={% url 'owner_edit_vc' owner.id %} role="button">Editar</a>
+                    {# En esta parte del codigo le estpy indicando que primero va ir a la url y luego a la views o vista #}
+                    <a class="btn btn-danger" href={% url 'owner_delete_vc' owner.id %} role="button">Eliminar owner</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

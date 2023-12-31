@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'pokemon.apps.PokemonConfig',
     'register.apps.RegisterConfig',
     'owner.apps.OwnerConfig',
+    'rest_framework',
+
+
 ]
 
 MIDDLEWARE = [

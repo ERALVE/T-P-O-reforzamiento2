@@ -1,0 +1,16 @@
+{% extends "base_generic_owner.html" %}
+
+{% block content%}
+    <h1>Editar owner con vistas basadas en clases</h1>
+    <div class="card-body">
+            <form method="post">
+                {# tokem es la autorizacion para que django agregue a la base de datos, para cuidarse de los choros ciberneticos #}
+                {% csrf_token  %}
+
+                {{ form.as_p }}
+                <a class="btn btn-primary" href={% url 'owner_list_vc' %} role="button">Cancelar</a>
+                <button class="btn btn-success" type="submit">Editar owner </button>
+            </form>
+    </div>
+
+{% endblock %}

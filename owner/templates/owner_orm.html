@@ -2,11 +2,10 @@
 
 {% block content%}
     <p>Uso de ORM's en Django</p>
-
-     {% for owner in data %}
-        <p>{{ owner.nombre }} tiene {{ owner.edad }} y es de {{ owner.pais }}</p>
-
+    {% for owner in data %}
+      <p>{{ owner.nombre }} tiene {{ owner.edad }} y es de {{ owner.pais }}</p>
     {% endfor %}
-
+{# para el uso del get #}
+{#    <p>{{ data.nombre }} tiene {{ data.edad }} años y es de {{ data.pais }}</p>#}
 
 {% endblock %}
