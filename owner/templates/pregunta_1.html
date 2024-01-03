@@ -1,0 +1,45 @@
+{% extends "base_generic_owner.html" %}
+
+{% block title %} <title>Lista de Owners</title> {% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">País</th>
+                <th scope="col">Botones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for owner in data %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ owner.nombre }}</td>
+                    <td>{{ owner.edad }}</td>
+                    <td>{{ owner.pais }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'owner_update' id_owner=owner.id %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url 'owner_delete' id_owner=owner.id %}">Eliminar</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="container mt-4">
+        <h2>Lista de Owners </h2>
+
+        <p>Hay {{ count_peru }} owners de Perú y {{ count_argentina }} owners de Argentina.</p>
+
+        <div class="row">
+            {% for owner in data %}
+                <div class="col-md-4 mb-4">
+                    <!-- ... (contenido de cada owner) ... -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

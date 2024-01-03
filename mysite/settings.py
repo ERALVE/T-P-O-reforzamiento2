@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'pokemon.apps.PokemonConfig',
     'register.apps.RegisterConfig',
     'owner.apps.OwnerConfig',
+    'reforzamiento.apps.ReforzamientoConfig',
     'rest_framework',
+    'rest_framework_simplejwt',
 
 
 ]

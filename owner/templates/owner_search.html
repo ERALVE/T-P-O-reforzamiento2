@@ -1,33 +1,39 @@
 {% extends "base_generic_owner.html" %}
 
 {% block content %}
-    <label for="">Búsqueda Owner</label>
+    <div class="container mt-4">
+        <h2>Búsqueda de Owner</h2>
 
-    <div class="input-group">
-        <form class="d-flex" method="get" style="width: 450px">
-            {# En el input va el valor que se esta recibiendo de la vista #}
-            <input class="from-control" placeholder="Ingrese el nombre del owner al buscar" type="text" name="q"
-                   value="{{ query|escape }}">
-        </form>
-    </div>
-    {# Si la query no obtiene un dato se usara  #}
-    {% if query %}
+        <div class="input-group mb-3">
+            <form class="d-flex" method="get" style="width: 450px">
+                <input class="form-control" placeholder="Ingrese el nombre del owner o país" type="text" name="q"
+                       value="{{ query|escape }}">
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </form>
+        </div>
 
+        {% if query %}
+            <h3>Resultados para "{{ query | escape }}"</h3>
 
-        <h2>Resultado para "{{ query | escape }}"</h2>
-        {# En esta pate del programa se realizan busquedas atraves de la ventana busqueda #}
-        {% if data %}
-            <ul>
-                {% for owner in data %}
-                    <li>{{ owner.nombre }} es de {{ owner.pais }} y tiene {{ owner.edad }} años de edad.</li>
-                {% endfor %}
-                {% else %}
-                <p>No se encontraron coincidencias</p>
-            </ul>
+            {% if data %}
+                <ul>
+                    {% for owner in data %}
+                        <li>
+                            {{ owner.nombre }} es de {{ owner.pais }}, actualmente tiene {{ owner.edad }} años de edad
+                            {% if owner.vigente %}
+                                y su identificación está vigente.
+                            {% else %}
+                                y su identificación no está vigente.
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No se encontraron coincidencias.</p>
+            {% endif %}
+        {% else %}
+            <p>No se envió ninguna búsqueda aún.</p>
         {% endif %}
-    {% else %}
-        <p>No se envio ninguna busqueda aún</p>
-    {% endif %}
-
+    </div>
 {% endblock %}
 

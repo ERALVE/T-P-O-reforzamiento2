@@ -1,0 +1,21 @@
+{% extends "base_generic_owner.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Eliminar Owner</h2>
+        <p>¿Estás seguro de que deseas eliminar al Owner?</p>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>Nombre:</strong> {{ owner.nombre }}<br>
+                <strong>Edad:</strong> {{ owner.edad }}<br>
+                <strong>País:</strong> {{ owner.pais }}<br>
+            </li>
+        </ul>
+        <form method="post" action="{% url 'owner_delete' id_owner=owner.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a href="{% url 'owner_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,16 +1,15 @@
 {% extends "base_generic_owner.html" %}
-{# owner_update va ser nuestro formulario  #}
-{% block content%}
-    <div class="card-body">
-            <form method="post">
-                {# tokem es la autorizacion para que django agregue a la base de datos, para cuidarse de los choros ciberneticos #}
-                {% csrf_token  %}
 
-                {{ data.as_p }}
-                <a class="btn btn-primary" href={% url 'owner_details' %} role="button">Cancelar</a>
-                <button class="btn btn-success" type="submit">Guardar</button>
-            </form>
+{% block content %}
+    <div class="container mt-4">
+        <h2>Editar Owner</h2>
+
+        <form method="post" action="{% url 'owner_update' id_owner=owner.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <a href="{% url 'owner_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
     </div>
-
-
 {% endblock %}

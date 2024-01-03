@@ -6,8 +6,8 @@
             <form method="post">
                 {# tokem es la autorizacion para que django agregue a la base de datos, para cuidarse de los choros ciberneticos #}
                 {% csrf_token  %}
-                {{ data.as_p }}
-                <a class="btn btn-primary" href={% url 'owner_details' %} role="button">Cancelar</a>
+                {{ form.as_p }}
+                <a class="btn btn-primary" href={% url 'owner_list_vc' %} role="button">Cancelar</a>
                 <button class="btn btn-success" type="submit">Guardar Owner</button>
             </form>
     </div>
